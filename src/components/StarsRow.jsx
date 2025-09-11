@@ -11,7 +11,7 @@ export default function StarsRow({ completedSets }) {
         marginTop: 0,
       }}
     >
-      {[...Array(5)].map((_, i) => (
+      {[...Array(3)].map((_, i) => (
         <img
           key={i}
           src={

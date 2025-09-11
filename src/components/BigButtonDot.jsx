@@ -24,7 +24,7 @@ export default function BigButtonDot({
     >
       <img
         src={buttonImg}
-        alt="Work Button"
+        alt="A big button that activates the timer"
         style={{ width: 140, height: 140 }}
       />
       {children}

@@ -24,7 +24,7 @@ export default function App() {
   const [completedSets, setCompletedSets] = useState(0);
   const intervalRef = useRef(null);
 
-  // Start timer
+  // Starta timer
   const handleButtonClick = () => {
     if (!isRunning && completedSets < 5) {
       setIsRunning(true);
@@ -53,6 +53,9 @@ export default function App() {
         setCompletedSets((prev) => prev + 1);
         setCompletedSteps(0);
         // If all stars are done, stop timer permanently
+        if (completedSets + 1 === 3) {
+          setIsRunning(false);
+        }
         if (completedSets + 1 === 5) {
           // 5 stars
           setIsRunning(false);
