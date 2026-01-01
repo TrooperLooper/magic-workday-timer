@@ -14,9 +14,6 @@ export default function MinutesCircle({
   const center = CIRCLE_CONFIG.CENTER;
   const rotationOffset = CIRCLE_CONFIG.ROTATION_OFFSET;
 
-  // For long timer, expire from left of top dot (index 24), then 0, 1, ..., 23
-  const firstDotIndex = numDots - 1; // Index just left of top dot
-
   function getLogicalIndex(i: number): number {
     if (timerType === TIMER_TYPES.LONG) {
       // Left-to-right, starting at 24, ending at 0

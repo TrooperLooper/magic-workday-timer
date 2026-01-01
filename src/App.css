@@ -6,6 +6,16 @@
   width: 400px;
   height: 400px;
   margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-container .center-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* Minute Dots Circle */
@@ -25,10 +35,7 @@
 
 /* Center Button */
 .center-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   z-index: 2;
   cursor: pointer;
   transition: filter 0.2s ease;
@@ -37,6 +44,10 @@
   padding: 0;
   font-size: inherit;
   font-family: inherit;
+  width: 140px;
+  height: 140px;
+  display: grid;
+  place-items: center;
 }
 
 .center-button:hover:not(:disabled) {
@@ -50,6 +61,16 @@
 .center-button:disabled {
   opacity: 0.7;
   cursor: default;
+}
+
+.countdown-number {
+  font-size: 72px;
+  font-weight: bold;
+  font-family: "Tilt Warp", Arial Black, sans-serif;
+  line-height: 1;
+  color: white;
+  white-space: nowrap;
+  text-align: center;
 }
 
 /* Pulse animation when timer is running */

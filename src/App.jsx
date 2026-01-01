@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import MinutesCircle from "./components/MinutesCircle";
 import BigButtonDot from "./components/BigButtonDot";
 import CountdownNumber from "./components/CountdownNumber";
 import PillRow from "./components/PillRow";
 import StarsRow from "./components/StarsRow";
+import AnimationsDemo from "./AnimationsDemo";
 import { getTimerType } from "./utils";
 import { usePomodoro } from "./hooks/usePomodoro";
 import "./App.css";
 
 export default function App() {
+  const [showDemo, setShowDemo] = useState(false);
+
   const {
     step,
     timeLeft,
@@ -18,6 +21,31 @@ export default function App() {
     handleButtonClick,
     currentTimer,
   } = usePomodoro();
+
+  if (showDemo) {
+    return (
+      <>
+        <AnimationsDemo />
+        <button
+          onClick={() => setShowDemo(false)}
+          style={{
+            position: "fixed",
+            bottom: 20,
+            right: 20,
+            padding: "10px 20px",
+            background: "#333",
+            color: "white",
+            border: "none",
+            borderRadius: "8px",
+            cursor: "pointer",
+            fontSize: "14px",
+          }}
+        >
+          ← Back to Timer
+        </button>
+      </>
+    );
+  }
 
   return (
     <div>
@@ -38,6 +66,23 @@ export default function App() {
       </div>
       <PillRow completedSteps={completedSteps} />
       <StarsRow completedSets={completedSets} />
+      <button
+        onClick={() => setShowDemo(true)}
+        style={{
+          position: "fixed",
+          bottom: 20,
+          right: 20,
+          padding: "10px 20px",
+          background: "#4caf50",
+          color: "white",
+          border: "none",
+          borderRadius: "8px",
+          cursor: "pointer",
+          fontSize: "14px",
+        }}
+      >
+        🎬 Animations Demo →
+      </button>
     </div>
   );
 }

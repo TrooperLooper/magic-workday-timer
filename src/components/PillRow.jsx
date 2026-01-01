@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { animate } from "motion";
 import { TIMER_SEQUENCE, PILL_CONFIG, IMAGE_PATHS } from "../constants";
 import { handleImageError } from "../imageErrorHandler";
 
@@ -38,7 +39,34 @@ const pillSvgs = [
 ];
 
 export default function PillRow({ completedSteps }) {
+  const pillRefs = useRef([]);
+  const previousCompletedStepsRef = useRef(completedSteps);
+
   const isShortBreak = (index) => TIMER_SEQUENCE[index].minutes === 5;
+
+  useEffect(() => {
+    // When a new pill is completed, animate it with pop and fade
+    if (completedSteps > previousCompletedStepsRef.current) {
+      const newPillIndex = completedSteps - 1;
+      const pillElement = pillRefs.current[newPillIndex];
+
+      if (pillElement) {
+        // Pop animation: image fill and scale happen simultaneously
+        animate(
+          pillElement,
+          {
+            scale: [1, 1.25, 1],
+          },
+          {
+            duration: 0.3,
+            ease: "easeOut",
+          }
+        );
+      }
+    }
+
+    previousCompletedStepsRef.current = completedSteps;
+  }, [completedSteps]);
 
   return (
     <div
@@ -52,8 +80,11 @@ export default function PillRow({ completedSteps }) {
       {pillSvgs.map((pill, i) => (
         <img
           key={i}
+          ref={(el) => (pillRefs.current[i] = el)}
           src={i < completedSteps ? pill.done : pill.next}
-          alt={`${i < completedSteps ? "Completed" : "Upcoming"} timer block ${i + 1}`}
+          alt={`${i < completedSteps ? "Completed" : "Upcoming"} timer block ${
+            i + 1
+          }`}
           aria-hidden="true"
           onError={handleImageError}
           style={{
@@ -63,6 +94,7 @@ export default function PillRow({ completedSteps }) {
             height: isShortBreak(i)
               ? PILL_CONFIG.SHORT_BREAK_SIZE
               : PILL_CONFIG.STANDARD_SIZE,
+            willChange: "transform",
           }}
         />
       ))}

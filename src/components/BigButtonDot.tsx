@@ -19,8 +19,12 @@ export default function BigButtonDot({
   };
 
   const ariaLabel = isRunning
-    ? `Timer running. ${color === "red" ? "Work" : "Break"} session in progress.`
-    : `Start ${color === "red" ? "work" : "break"} session. Press Space to start.`;
+    ? `Timer running. ${
+        color === "red" ? "Work" : "Break"
+      } session in progress.`
+    : `Start ${
+        color === "red" ? "work" : "break"
+      } session. Press Space to start.`;
 
   return (
     <button
