@@ -1,6 +1,6 @@
 /**
  * Test Suite: usePomodoro Hook
- * 
+ *
  * This test file describes the expected behavior of the Pomodoro timer logic.
  * Tests verify:
  * - Timer countdown mechanism
@@ -17,7 +17,6 @@ import { TIMER_SEQUENCE, MAX_SETS, TIMER_INTERVAL_MS } from "../../constants";
 // These tests are written BEFORE implementation (TDD approach)
 
 describe("usePomodoro Hook (Future Implementation)", () => {
-  
   test.skip("should initialize with first timer from TIMER_SEQUENCE", () => {
     // Expected: hook initializes with first timer (25 min work session)
     // Expected: step = 0, timeLeft = 25, isRunning = false

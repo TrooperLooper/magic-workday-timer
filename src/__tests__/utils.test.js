@@ -46,7 +46,7 @@ describe("playAudio()", () => {
     global.Audio.mockImplementation(() => ({
       play: mockPlay,
     }));
-    
+
     await playAudio("/chime.mp3");
     expect(mockPlay).toHaveBeenCalled();
   });
@@ -56,11 +56,11 @@ describe("playAudio()", () => {
     global.Audio.mockImplementation(() => ({
       play: jest.fn().mockRejectedValue(new Error("Audio failed")),
     }));
-    
+
     // Should not throw
     await playAudio("/invalid.mp3");
     expect(consoleWarnSpy).toHaveBeenCalled();
-    
+
     consoleWarnSpy.mockRestore();
   });
 });

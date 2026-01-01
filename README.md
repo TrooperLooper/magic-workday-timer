@@ -20,6 +20,7 @@ People with ADHD and hyperfocus tendencies often work without breaks, leading to
 - **Central timer button:** Large, tactile button showing remaining minutes. Click to start work/break cycles. It displays "work" as red and "break" as green.
 - **Star indicators:** 4 stars at the top represent completed work/break sets. 1 star = 2 hours 15 minutes. Stars fill as you complete cycles.
 - **Progress pills:** 8 visual pills represent each timer block (25/5/25/5/25/5/25/20 min). Pills fill as you complete cycles.
+- **Fully responsive design:** Optimized for desktop (400×400px), tablets (320×320px), and mobile phones (280×280px). All UI elements scale gracefully across screen sizes.
 - \*📸 Screenshots
 
 ![Magic Timer Demo](screenshot1.png)
@@ -72,18 +73,22 @@ _Completed workday with all stars filled_
 ## 🛠 Tech Stack
 
 - **React 19** (with Hooks)
+- **TypeScript** (full type safety)
 - **Vite** (ultra-fast build tool)
-- **JavaScript ES6+**
 - **SVG graphics** (custom-designed UI elements)
-- **CSS3** (responsive layout)
+- **CSS3** (responsive layout with mobile-first design)
 - **Jest & React Testing Library** (unit testing)
 
 ### Architecture
 
-- **Modular components** – Each UI element is an independent React component
-- **State management** – Centralized state in App.jsx using `useState` and `useEffect`
-- **Interval-based timer** – Uses `setInterval` for precise minute tracking
+- **Custom Hook Pattern** – `usePomodoro` hook encapsulates all timer logic for reusability
+- **Modular components** – Each UI element is an independent React component with strict TypeScript types
+- **Centralized state** – State management via custom hook using `useState` and `useEffect`
+- **Type-safe** – Full TypeScript implementation with 9+ shared interfaces for components and utilities
+- **Optimized effects** – Split `useEffect` dependencies to prevent unnecessary re-renders
+- **Utility functions** – 7 reusable helper functions for timer logic, audio, and formatting
 - **SVG visualization** – Dynamic dots, pills, and stars updated in real-time
+- **Error handling** – Graceful fallbacks for missing images and audio files
 
 ---
 
@@ -139,21 +144,25 @@ All rights reserved © 2025 Lars Munck
 
 ## Ideas for Further Improvement
 
-### High Priority
+### ✅ Completed
 
-- ✅ Extract constants and magic numbers to `constants.js`
+- ✅ Extract constants and magic numbers to `constants.ts`
 - ✅ Refactor timer logic into custom `usePomodoro` hook
-- ✅ Add error handling for missing audio files
+- ✅ Add error handling for missing audio/image files
 - ✅ Move inline CSS to external stylesheet
-- ✅ Improve accessibility (ARIA labels, keyboard support)
-- ⏳ Set up Jest testing suite
+- ✅ Set up Jest testing suite (40 tests passing)
+- ✅ Full TypeScript conversion with type safety
+- ✅ Optimize useEffect dependencies
+- ✅ Responsive design for mobile/tablet/desktop
+- ✅ Prevent button clicks while timer is running
 
-### Medium Priority
+### 🎯 Next Priority
 
-- Add TypeScript for type safety
-- Implement component PropTypes validation
-- Add JSDoc comments to all functions
-- Refactor App.jsx timer logic into custom `usePomodoro` hook
+- **Accessibility improvements** – Add ARIA labels, keyboard navigation (Space to start/stop, Esc to reset)
+- **Settings panel** – User-configurable workday length and localStorage persistence
+- **Animations** – Micro-interactions using [motion.dev](https://motion.dev) library
+- **Keyboard shortcuts** – Full keyboard control
+- **Dark mode** – Toggle light/dark theme
 
 ### Feature Requests & Future Enhancements
 

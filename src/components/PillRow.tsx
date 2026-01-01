@@ -1,4 +1,5 @@
 import React from "react";
+import type { PillRowProps } from "../types";
 import { TIMER_SEQUENCE, PILL_CONFIG, IMAGE_PATHS } from "../constants";
 import { handleImageError } from "../imageErrorHandler";
 
@@ -37,8 +38,11 @@ const pillSvgs = [
   },
 ];
 
-export default function PillRow({ completedSteps }) {
-  const isShortBreak = (index) => TIMER_SEQUENCE[index].minutes === 5;
+export default function PillRow({
+  completedSteps,
+}: PillRowProps): React.ReactElement {
+  const isShortBreak = (index: number): boolean =>
+    TIMER_SEQUENCE[index].minutes === 5;
 
   return (
     <div className="pill-row">

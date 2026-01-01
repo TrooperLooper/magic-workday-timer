@@ -8,7 +8,7 @@ import { getTimerType } from "./utils";
 import { usePomodoro } from "./hooks/usePomodoro";
 import "./App.css";
 
-export default function App() {
+export default function App(): React.ReactElement {
   const {
     step,
     timeLeft,

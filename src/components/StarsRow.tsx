@@ -1,8 +1,11 @@
 import React from "react";
+import type { StarsRowProps } from "../types";
 import { MAX_SETS, IMAGE_PATHS } from "../constants";
 import { handleImageError } from "../imageErrorHandler";
 
-export default function StarsRow({ completedSets }) {
+export default function StarsRow({
+  completedSets,
+}: StarsRowProps): React.ReactElement {
   return (
     <div className="stars-row">
       {[...Array(MAX_SETS)].map((_, i) => (

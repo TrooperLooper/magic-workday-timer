@@ -34,12 +34,16 @@
   transition: filter 0.2s ease;
 }
 
-.center-button:hover {
+.center-button:hover:not(.disabled) {
   filter: brightness(1.1);
 }
 
-.center-button:active {
+.center-button:active:not(.disabled) {
   filter: brightness(0.95);
+}
+
+.center-button.disabled {
+  opacity: 0.7;
 }
 
 /* Pulse animation when timer is running */

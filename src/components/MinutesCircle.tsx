@@ -1,4 +1,5 @@
 import React from "react";
+import type { MinutesCircleProps } from "../types";
 import { CIRCLE_CONFIG, TIMER_TYPES, IMAGE_PATHS } from "../constants";
 import { handleImageError } from "../imageErrorHandler";
 
@@ -7,7 +8,7 @@ export default function MinutesCircle({
   secondsLeft,
   isRunning,
   timerType,
-}) {
+}: MinutesCircleProps): React.ReactElement {
   const numDots = CIRCLE_CONFIG.NUM_DOTS;
   const radius = CIRCLE_CONFIG.RADIUS;
   const center = CIRCLE_CONFIG.CENTER;
@@ -16,7 +17,7 @@ export default function MinutesCircle({
   // For long timer, expire from left of top dot (index 24), then 0, 1, ..., 23
   const firstDotIndex = numDots - 1; // Index just left of top dot
 
-  function getLogicalIndex(i) {
+  function getLogicalIndex(i: number): number {
     if (timerType === TIMER_TYPES.LONG) {
       // Left-to-right, starting at 24, ending at 0
       return (24 - i + numDots) % numDots;
@@ -34,7 +35,8 @@ export default function MinutesCircle({
     <div className="minute-dots">
       {Array.from({ length: numDots }).map((_, i) => {
         const logicalIndex = getLogicalIndex(i);
-        const angle = (2 * Math.PI * logicalIndex) / numDots + rotationOffset;
+        const angle =
+          (2 * Math.PI * logicalIndex) / numDots + rotationOffset;
         const x = center + radius * Math.cos(angle) - 9;
         const y = center + radius * Math.sin(angle) - 9;
 

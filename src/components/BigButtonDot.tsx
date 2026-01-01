@@ -1,4 +1,5 @@
 import React from "react";
+import type { BigButtonDotProps } from "../types";
 import { BUTTON_CONFIG, IMAGE_PATHS } from "../constants";
 import { handleImageError } from "../imageErrorHandler";
 
@@ -7,11 +8,11 @@ export default function BigButtonDot({
   isRunning,
   onClick,
   children,
-}) {
+}: BigButtonDotProps): React.ReactElement {
   const buttonImg =
     color === "red" ? IMAGE_PATHS.buttons.work : IMAGE_PATHS.buttons.break;
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     if (!isRunning) {
       onClick();
     }
