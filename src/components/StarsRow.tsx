@@ -7,7 +7,14 @@ export default function StarsRow({
   completedSets,
 }: StarsRowProps): React.ReactElement {
   return (
-    <div className="stars-row">
+    <div
+      className="stars-row"
+      role="progressbar"
+      aria-label={`Workday progress: ${completedSets} of ${MAX_SETS} sets completed`}
+      aria-valuenow={completedSets}
+      aria-valuemin={0}
+      aria-valuemax={MAX_SETS}
+    >
       {[...Array(MAX_SETS)].map((_, i) => (
         <img
           key={i}
@@ -15,7 +22,8 @@ export default function StarsRow({
             i < completedSets ? IMAGE_PATHS.stars.done : IMAGE_PATHS.stars.next
           }
           onError={handleImageError}
-          alt={`Star ${i + 1}`}
+          alt={`${i < completedSets ? "Completed" : "Upcoming"} workday set ${i + 1}`}
+          aria-hidden="true"
           style={{ width: 35, height: 35 }}
         />
       ))}

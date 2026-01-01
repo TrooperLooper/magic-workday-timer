@@ -45,12 +45,20 @@ export default function PillRow({
     TIMER_SEQUENCE[index].minutes === 5;
 
   return (
-    <div className="pill-row">
+    <div
+      className="pill-row"
+      role="progressbar"
+      aria-label={`Timer steps progress: ${completedSteps} of ${TIMER_SEQUENCE.length} completed`}
+      aria-valuenow={completedSteps}
+      aria-valuemin={0}
+      aria-valuemax={TIMER_SEQUENCE.length}
+    >
       {pillSvgs.map((pill, i) => (
         <img
           key={i}
           src={i < completedSteps ? pill.done : pill.next}
-          alt={`Pill ${i + 1}`}
+          alt={`${i < completedSteps ? "Completed" : "Upcoming"} timer block ${i + 1}`}
+          aria-hidden="true"
           onError={handleImageError}
           style={{
             width: isShortBreak(i)

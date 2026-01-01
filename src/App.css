@@ -32,18 +32,24 @@
   z-index: 2;
   cursor: pointer;
   transition: filter 0.2s ease;
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
 }
 
-.center-button:hover:not(.disabled) {
+.center-button:hover:not(:disabled) {
   filter: brightness(1.1);
 }
 
-.center-button:active:not(.disabled) {
+.center-button:active:not(:disabled) {
   filter: brightness(0.95);
 }
 
-.center-button.disabled {
+.center-button:disabled {
   opacity: 0.7;
+  cursor: default;
 }
 
 /* Pulse animation when timer is running */

@@ -17,20 +17,28 @@ export default function BigButtonDot({
     }
   };
 
+  const ariaLabel = isRunning
+    ? `Timer running. ${color === "red" ? "Work" : "Break"} session in progress.`
+    : `Start ${color === "red" ? "work" : "break"} session`;
+
   return (
-    <div
+    <button
       className={`center-button${isRunning ? " pulse" : ""}${
         isRunning ? " disabled" : ""
       }`}
       onClick={handleClick}
+      aria-label={ariaLabel}
+      aria-pressed={isRunning}
+      disabled={isRunning}
     >
       <img
         src={buttonImg}
-        alt="A big button that activates the timer"
+        alt=""
+        aria-hidden="true"
         onError={handleImageError}
         style={{ width: BUTTON_CONFIG.WIDTH, height: BUTTON_CONFIG.HEIGHT }}
       />
       {children}
-    </div>
+    </button>
   );
 }
