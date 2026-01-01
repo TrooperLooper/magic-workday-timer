@@ -38,6 +38,21 @@ export function usePomodoro() {
   };
 
   /**
+   * Keyboard navigation - Space key to start timer
+   */
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.code === "Space") {
+        event.preventDefault();
+        handleButtonClick();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
+  }, [completedSets]);
+
+  /**
    * Timer countdown logic - starts/stops interval based on isRunning status
    * Only depends on isRunning to avoid cascading re-renders
    */
