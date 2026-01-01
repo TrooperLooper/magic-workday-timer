@@ -21,7 +21,7 @@ People with ADHD and hyperfocus tendencies often work without breaks, leading to
 - **Star indicators:** 4 stars at the top represent completed work/break sets. 1 star = 2 hours 15 minutes. Stars fill as you complete cycles.
 - **Progress pills:** 8 visual pills represent each timer block (25/5/25/5/25/5/25/20 min). Pills fill as you complete cycles.
 - **Fully responsive design:** Optimized for desktop (400×400px), tablets (320×320px), and mobile phones (280×280px). All UI elements scale gracefully across screen sizes.
-- \*📸 Screenshots
+
 
 ![Magic Timer Demo](screenshot1.png)
 _Main timer interface with minute countdown dots and progress pills_

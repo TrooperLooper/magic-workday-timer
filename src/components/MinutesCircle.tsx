@@ -35,8 +35,7 @@ export default function MinutesCircle({
     <div className="minute-dots">
       {Array.from({ length: numDots }).map((_, i) => {
         const logicalIndex = getLogicalIndex(i);
-        const angle =
-          (2 * Math.PI * logicalIndex) / numDots + rotationOffset;
+        const angle = (2 * Math.PI * logicalIndex) / numDots + rotationOffset;
         const x = center + radius * Math.cos(angle) - 9;
         const y = center + radius * Math.sin(angle) - 9;
 

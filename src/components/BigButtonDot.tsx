@@ -20,7 +20,9 @@ export default function BigButtonDot({
 
   return (
     <div
-      className={`center-button${isRunning ? " pulse" : ""}${isRunning ? " disabled" : ""}`}
+      className={`center-button${isRunning ? " pulse" : ""}${
+        isRunning ? " disabled" : ""
+      }`}
       onClick={handleClick}
     >
       <img
